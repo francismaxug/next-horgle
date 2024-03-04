@@ -116,7 +116,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className=" 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas text-red-400 "
+              className=" 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas text-blue-400 "
             >
               We are dynamic, responsible and most trusted petroleum transporter
               <span className=" lg:text-5xl text-yellow-500 ">.</span>
