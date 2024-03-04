@@ -417,7 +417,7 @@ export default function Home() {
               You are in a good <br /> company
             </p>
           </div>
-          <div className=" h-[16rem] sm:h-0 lg:col-span-2 -mt-32 lg:-mt-0">
+          <div className=" border border-red-500 h-[16rem] sm:h-0 lg:col-span-2  lg:-mt-0">
             <ImageSlider />
           </div>
         </Wrapper>
