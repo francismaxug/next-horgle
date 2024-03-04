@@ -408,7 +408,7 @@ export default function Home() {
         </div>
       </Wrapper>
       <div className=" bg-[#f6f7fb] h-[27.7rem] sm:h-[35.5rem]  lg:h-[32.7rem] px-3 xl:px-0 ">
-        <Wrapper className="h-screen grid lg:grid lg:grid-cols-3 py-7 lg:gap-6 lg:py-7 xl:py-10">
+        <Wrapper className="h-auto sm:h-screen grid lg:grid lg:grid-cols-3 py-7 lg:gap-6 lg:py-7 xl:py-10">
           <div className="lg:mt-12 xl:mt-14">
             <p className=" text-[0.9rem] text-gray-400 font-poppins">
               Our Partners
