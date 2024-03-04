@@ -397,7 +397,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className=" h-[19rem] row-span-2">
+        <div className=" sm:h-[19rem] h-[22rem] row-span-2">
           <iframe
             src="https://widgets.sociablekit.com/google-reviews/iframe/25373787"
             frameborder="0"
