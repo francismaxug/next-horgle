@@ -207,7 +207,7 @@ export default function Home() {
           </div>
         </Wrapper>
       </motion.div>
-      <div className=" bg-[#112c53]  h-[67rem] sm:h-[67rem] md:h-[43.5rem] lg:h-[36rem]  px-3 sm:max-xl:px-3  ">
+      <div className=" bg-[#112c53]  h-auto sm:h-[67rem] md:h-[43.5rem] lg:h-[36rem]  px-3 sm:max-xl:px-3  ">
         <Wrapper className=" h-auto sm:h-screen grid lg:grid-cols-2 py-10  gap-6 lg:py-20">
           <motion.div
             initial={{ x: -50, opacity: 0 }}
