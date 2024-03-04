@@ -57,7 +57,7 @@ function Nav() {
   const [navButon, setNavBoton] = useState(pathname);
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <header className=" bg-blue-200 w-full bg-skin-header  fixed left-0 right-0 top-0 z-50 xl:px-28 shadow-md border-2 py-[10px] ">
+    <header className="  w-full bg-skin-header  fixed left-0 right-0 top-0 z-50 xl:px-28 shadow-md border-2 py-[10px] ">
       <div className=" mx-auto max-w-[60rem] flex justify-between">
         <Link href="/">
           <div className=" flex gap-x-0.5 justify-center items-center">
