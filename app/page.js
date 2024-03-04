@@ -196,7 +196,7 @@ export default function Home() {
                   </h1>
                   <p
                     className={`${
-                      item.id === 1 || item.id === 3 ? " lg:text-red-400" : ""
+                      item.id === 1 || item.id === 3 ? "" : ""
                     } text-xs`}
                   >
                     {item.p}
