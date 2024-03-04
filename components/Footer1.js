@@ -123,7 +123,7 @@ function Footer() {
                   </p>{" "}
                 </div>
                 <div className=" flex">
-                  <Image src="/email1.png" className="w-[1.1rem] h-[1.1rem]" alt="" width={100} height={100} />
+                  <Image src="/email1.png" className="w-[0.8rem] h-[0.8rem]" alt="" width={100} height={100} />
                   <p>
                     Email: info@horgletrasnport.com <br />{" "}
                     cservice@horgletransport.com
