@@ -116,7 +116,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className=" 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas text-blue-400 "
+              className=" 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas "
             >
               We are dynamic, responsible and most trusted petroleum transporter
               <span className=" lg:text-5xl text-yellow-500 ">.</span>
@@ -417,7 +417,7 @@ export default function Home() {
               You are in a good <br /> company
             </p>
           </div>
-          <div className=" border border-red-500 h-[16rem] sm:h-0 lg:col-span-2  lg:-mt-0">
+          <div className="  h-[16rem] sm:h-0 lg:col-span-2  lg:-mt-0">
             <ImageSlider />
           </div>
         </Wrapper>
