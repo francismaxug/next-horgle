@@ -7,10 +7,29 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      textColor: {
+        skin: {
+          textblack: "var(--textBlackColor)",
+          textWhite: "var(--textWhiteColor)",
+          gray: "var(--grayColor)",
+        },
+      },
+
+      backgroundColor: {
+        skin: {
+          background: "var(--background)",
+          header: "var(--headerColor)",
+          footer: "var(--footerColor)",
+          bgyellow: "var(--bgYellow)",
+          bgLightblue: "var(--bglightBlue)",
+        },
+      },
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+        montserrat: ["Montserrat", "sans-serif"],
+        fredoka: ["Fredoka", "sans-serif"],
+        Carnas: ["Carnas W03 Regular", "sans-serif"],
       },
     },
   },
