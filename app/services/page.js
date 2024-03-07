@@ -77,31 +77,31 @@ function Service() {
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "120%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
 
-  const createPrompt = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("/api/sendmail/send", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          messages,
-          country,
-          phone,
-          region,
-        }),
-      });
-      if (response.ok) {
-        console.log("sent successfully");
-        // console.log(await response.json());
-      }
-    } catch (error) {
-      console.log("eerr", error);
-    }
-  };
+  // const createPrompt = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     const response = await fetch("/api/sendmail/send", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         name,
+  //         email,
+  //         messages,
+  //         country,
+  //         phone,
+  //         region,
+  //       }),
+  //     });
+  //     if (response.ok) {
+  //       console.log("sent successfully");
+  //       // console.log(await response.json());
+  //     }
+  //   } catch (error) {
+  //     console.log("eerr", error);
+  //   }
+  // };
 
   return (
     <main className=" lg:mt-20 xl:mt-12 mt-16">
@@ -258,7 +258,7 @@ function Service() {
               className=" font-poppins text-white"
             >
               <h1 className=" text-2xl font-semibold">Lets Get Talking</h1>
-              <form onSubmit={createPrompt} className=" text-[0.8rem]">
+              <form onSubmit={""} className=" text-[0.8rem]">
                 <motion.div
                   variants={form}
                   className=" grid sm:grid-cols-2 gap-x-4 gap-y-3 mt-4"
