@@ -2,7 +2,7 @@
 import nodemailer from "nodemailer";
 export async function POST(req) {
   const body = await req.json();
-  const { name, email, messages } = body;
+  const { name, email, messages, country, region, phone } = body;
   console.log(body);
   try {
     const transporter = nodemailer.createTransport({
@@ -16,7 +16,7 @@ export async function POST(req) {
       from: email,
       to: "atingafrancis123@gmail.com",
       subject: "New Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${messages}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nRegion: ${region}\nCountry: ${country}\nMessage: ${messages}`,
     };
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
