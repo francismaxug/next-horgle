@@ -5,6 +5,7 @@ import Places from "../Places";
 import { useRef } from "react";
 import { regions } from "@/loops/textsvg";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Send from "@/app/Send";
 function Contact() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -144,7 +145,9 @@ function Contact() {
           <Wrapper className="  h-auto xlp-10 py-7 px-3 xl:px-0">
             <Wrapper className=" h-auto">
               <div className=" font-Carnas text-black">
-                <h1 className=" text-xl lg:text-2xl font-Carnas font-bold">Contact Us</h1>
+                <h1 className=" text-xl lg:text-2xl font-Carnas font-bold">
+                  Contact Us
+                </h1>
                 <form className=" text-[0.8rem]">
                   <div className=" grid sm:grid-cols-2 gap-x-4 gap-y-3 mt-4">
                     <div className="space-y-1">

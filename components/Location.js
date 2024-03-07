@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Send from "../app/Send";
 
 const Location = () => {
   return (

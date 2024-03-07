@@ -4,7 +4,7 @@ import { regions, slides, slides1, text } from "@/loops/textsvg";
 import Image from "next/image";
 import Places from "../Places";
 import Footer from "@/components/Footer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 const poips = {
@@ -38,7 +38,7 @@ const save = {
 };
 
 const form = {
-  hidden: { x: 15 },
+  hidden: { x: 8 },
   visible: {
     x: 0,
     transition: { duration: 0.8 },
@@ -52,7 +52,13 @@ function Service() {
   const scrollRef = useRef(null);
   const ref = useRef(null);
   const { scrollY } = useScroll();
-  console.log(scrollY);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [messages, setMessages] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [phone, setPhone] = useState("");
+
   // const yText = useTransform(
   //   scrollY,
   //   [150, 250, 300, 350, 400, 450, 520, 530, 550, 600, 700],
@@ -70,6 +76,33 @@ function Service() {
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "120%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+
+  const createPrompt = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch("/api/sendmail/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          messages,
+          country,
+          phone,
+          region,
+        }),
+      });
+      if (response.ok) {
+        console.log("sent successfully");
+        // console.log(await response.json());
+      }
+    } catch (error) {
+      console.log("eerr", error);
+    }
+  };
+
   return (
     <main className=" lg:mt-20 xl:mt-12 mt-16">
       <motion.div
@@ -225,7 +258,7 @@ function Service() {
               className=" font-poppins text-white"
             >
               <h1 className=" text-2xl font-semibold">Lets Get Talking</h1>
-              <form className=" text-[0.8rem]">
+              <form onSubmit={createPrompt} className=" text-[0.8rem]">
                 <motion.div
                   variants={form}
                   className=" grid sm:grid-cols-2 gap-x-4 gap-y-3 mt-4"
@@ -235,6 +268,7 @@ function Service() {
                       Name <span className=" text-red-500">*</span>
                     </label>
                     <input
+                      onChange={(e) => setName(e.target.value)}
                       type="text"
                       id="name"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -245,6 +279,7 @@ function Service() {
                       Email<span className=" text-red-500">*</span>
                     </label>
                     <input
+                      onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       id="email"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -253,6 +288,7 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="name">Region</label>
                     <select
+                      onChange={(e) => setRegion(e.target.value)}
                       name="region"
                       id=""
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -267,6 +303,7 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="name">Country</label>
                     <select
+                      onChange={(e) => setCountry(e.target.value)}
                       name="country"
                       id=""
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -279,6 +316,7 @@ function Service() {
                       Phone Number<span className=" text-red-500">*</span>
                     </label>
                     <input
+                      onChange={(e) => setPhone(e.target.value)}
                       type="tel"
                       id="phoneNumber"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -295,6 +333,7 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="message">Message</label>
                     <textarea
+                      onChange={(e) => setMessages(e.target.value)}
                       name="message"
                       id="message"
                       className="w-full focus:outline-none text-black  h-20 border-2 border-gray-300 rounded-sm"
@@ -303,7 +342,10 @@ function Service() {
                 </motion.div>
 
                 <div className=" sm:float-right sm:-mt-12 mt-5">
-                  <button className=" bg-yellow-500 hover:bg-slate-700 w-28 h-10 rounded-md">
+                  <button
+                    type="submit"
+                    className=" bg-yellow-500 hover:bg-slate-700 w-28 h-10 rounded-md"
+                  >
                     Submit
                   </button>
                 </div>

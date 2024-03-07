@@ -44,16 +44,16 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className=" flex h-auto sm:h-auto items-center justify-center md:h-[300px] flex-col lg:h-[500px] w-auto lg:w-full m-auto px-4 relative group">
+    <div className=" flex h-auto sm:h-auto items-center border border-red-400 justify-center md:h-auto flex-col lg:h-[500px] w-auto lg:w-full m-auto px-4 relative group">
       <div
-        className=" h-[8rem] overflow-hidden sm:h-48 sm:w-72 md:w-72 rounded-2xl border-2 w-auto bg-center mt-14 bg-cover duration-500"
+        className=" h-[8rem] overflow-hidden  sm:h-[10rem] sm:w-[15rem] md:w-[15rem] md:h-[10rem]   rounded-2xl border-2 w-auto bg-center mt-14 bg-cover duration-500"
 
         // style={{
         //   backgroundImage: `url(${slides[currentIndex].url})`,
         // }}
       >
         <Image
-          className=" w-32 sm:w-full  lg:w-full lg-72 h-full object-fill object-center"
+          className=" w-32 sm:w-full lg:w-full lg-72 h-full object-fill object-center"
           src={slides[currentIndex].url}
           alt={slides[currentIndex].title}
           width={1000}

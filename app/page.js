@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Send from "@/app/Send";
 
 const ppp = {
   hidden: { y: 90 },
@@ -98,6 +99,7 @@ export default function Home() {
   return (
     <>
       <div>
+       
         <Wrapper className="mb-16 md:mb-14 lg:mb-0 2xl:mb-16 h-auto">
           <div className=" relative  top-20 md:top-24 md:ml-2 2xl:top-28 xl:ml-16 -z-10">
             <Image
@@ -116,7 +118,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className=" 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas "
+              className=" text-blue-400 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas "
             >
               We are dynamic, responsible and most trusted petroleum transporter
               <span className=" lg:text-5xl text-yellow-500 ">.</span>
@@ -262,7 +264,12 @@ export default function Home() {
           </motion.div>
         </Wrapper>
       </div>
-      <motion.div variants={poips} initial="hidden" whileInView="visible" className="">
+      <motion.div
+        variants={poips}
+        initial="hidden"
+        whileInView="visible"
+        className=""
+      >
         <Wrapper className="h-[45rem] space-y-6 sm:space-y-8 mt-10 sm:max-lg:mt-12 px-3 md:px-3 sm:px-5 lg:mt-20 lg:grid grid-rows-[1fr_1fr] lg:grid-cols-3 md:mb-10 mb-28 sm:mb-16 lg:mb-5 lg:gap-9">
           <motion.div variants={v}>
             <p className=" text-[1rem] lg:text-[0.9rem] text-skin-gray font-Carnas">
@@ -417,7 +424,7 @@ export default function Home() {
               You are in a good <br /> company
             </p>
           </div>
-          <div className="  h-[16rem] sm:h-0 lg:col-span-2  lg:-mt-0">
+          <div className=" border border-blue-400  h-[16rem] sm:h-auto lg:col-span-2  lg:-mt-0">
             <ImageSlider />
           </div>
         </Wrapper>
