@@ -99,7 +99,6 @@ export default function Home() {
   return (
     <>
       <div>
-       
         <Wrapper className="mb-16 md:mb-14 lg:mb-0 2xl:mb-16 h-auto">
           <div className=" relative  top-20 md:top-24 md:ml-2 2xl:top-28 xl:ml-16 -z-10">
             <Image
@@ -424,7 +423,7 @@ export default function Home() {
               You are in a good <br /> company
             </p>
           </div>
-          <div className=" border border-blue-400  h-[16rem] sm:h-auto lg:col-span-2  lg:-mt-0">
+          <div className=" h-[16rem] sm:h-auto lg:col-span-2  lg:-mt-0">
             <ImageSlider />
           </div>
         </Wrapper>

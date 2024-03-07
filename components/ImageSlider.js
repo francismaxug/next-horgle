@@ -44,7 +44,7 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className=" flex h-auto sm:h-auto items-center border border-red-400 justify-center md:h-auto flex-col lg:h-[500px] w-auto lg:w-full m-auto px-4 relative group">
+    <div className=" flex h-auto sm:h-auto items-center justify-center md:h-auto flex-col lg:h-[500px] w-auto lg:w-full m-auto px-4 relative group">
       <div
         className=" h-[8rem] overflow-hidden  sm:h-[10rem] sm:w-[15rem] md:w-[15rem] md:h-[10rem]   rounded-2xl border-2 w-auto bg-center mt-14 bg-cover duration-500"
 
