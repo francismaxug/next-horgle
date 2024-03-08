@@ -84,7 +84,17 @@ function Service() {
   const handleSend = async () => {
     if (!name || !email || !messages || !country || !phone || !region) return;
     const res = await send(name, email, messages, country, phone, region);
-    toast.success("Message sent!");
+    toast.success("Message sent!",{
+      position: "bottom-right",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+      });
     setCountry("");
     setEmail("");
     setName("");
