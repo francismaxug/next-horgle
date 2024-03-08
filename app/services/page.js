@@ -1,6 +1,6 @@
 "use client";
 import Wrapper from "@/components/Wrapper";
-import { regions, slides, slides1, text } from "@/loops/textsvg";
+import { regions, slides1, text } from "@/loops/textsvg";
 import Image from "next/image";
 import Places from "../Places";
 import Footer from "@/components/Footer";
