@@ -84,7 +84,7 @@ function Service() {
   const handleSend = async () => {
     if (!name || !email || !messages || !country || !phone || !region) return;
     const res = await send(name, email, messages, country, phone, region);
-    toast.success("Message sent!",{
+    toast.success("Message sent!", {
       position: "bottom-right",
       autoClose: 4000,
       hideProgressBar: false,
@@ -93,8 +93,7 @@ function Service() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      transition: Bounce,
-      });
+    });
     setCountry("");
     setEmail("");
     setName("");
@@ -371,10 +370,7 @@ function Service() {
                 </motion.div>
 
                 <div className=" sm:float-right sm:-mt-12 mt-5">
-                  <button
-                   
-                    className=" bg-yellow-500 hover:bg-slate-700 w-28 h-10 rounded-md"
-                  >
+                  <button className=" bg-yellow-500 hover:bg-slate-700 w-28 h-10 rounded-md">
                     Submit
                   </button>
                 </div>

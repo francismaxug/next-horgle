@@ -3,7 +3,7 @@ import Nav from "@/components/Nav";
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import { Bounce, ToastContainer, toast } from "react-toastify";
+import { Bounce, ToastContainer, } from "react-toastify";
 export const metadata = {
   title: "Create Next App",
   description: "J.K Horggle transport and services limited",

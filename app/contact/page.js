@@ -38,8 +38,7 @@ function Contact() {
       draggable: true,
       progress: undefined,
       theme: "light",
-      transition: Bounce,
-      });
+    });
     setCountry("");
     setEmail("");
     setName("");
