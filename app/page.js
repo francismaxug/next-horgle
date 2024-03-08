@@ -400,8 +400,24 @@ export default function Home() {
             </span>
           </p>
         </div>
+        <div className=" h-[19rem] sm:h-[23rem] row-span-2">
+          <iframe
+            src="https://widgets.commoninja.com/iframe/349db832-602f-4331-bbbc-670b56c007a5"
+            width=""
+            height=""
+            scrolling="no"
+            className=" w-full h-full"
+          ></iframe>
+          {/* <iframe
+            src="https://embedsocial.com/api/pro_hashtag/86852eadd4ce9454ba24547858e1bebf7ae73a13"
+            width=""
+            height=""
+           
+            className=" w-full h-full"
+          ></iframe> */}
+        </div>
 
-        <div className=" sm:h-[19rem] h-[23rem] row-span-2">
+        {/* <div className=" sm:h-[19rem] h-[23rem] row-span-2">
           <iframe
             src="https://widgets.sociablekit.com/google-reviews/iframe/25373787"
             frameborder="0"
@@ -409,7 +425,8 @@ export default function Home() {
             height=""
             className=" w-full h-full"
           ></iframe>
-        </div>
+         
+        </div> */}
       </Wrapper>
       <div className=" bg-[#f6f7fb] h-[27.7rem] sm:h-[35.5rem]  lg:h-[32.7rem] px-3 xl:px-0 ">
         <Wrapper className="h-auto sm:h-screen grid lg:grid lg:grid-cols-3 py-7 lg:gap-6 lg:py-7 xl:py-10">

@@ -282,7 +282,7 @@ function Contact() {
                         onChange={(e) => setMessages(e.target.value)}
                         name="message"
                         id="message"
-                        className="w-full focus:outline-none  bg-orange-200/5 border-black border text-black  h-20  rounded-sm"
+                        className="w-full px-2 focus:outline-none  bg-orange-200/5 border-black border text-black  h-20  rounded-sm"
                       ></textarea>
                     </div>
                   </div>

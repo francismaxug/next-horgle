@@ -364,7 +364,7 @@ function Service() {
                       value={messages}
                       name="message"
                       id="message"
-                      className="w-full focus:outline-none text-black  h-20 border-2 border-gray-300 rounded-sm"
+                      className="w-full px-2 focus:outline-none text-black  h-20 border-2 border-gray-300 rounded-sm"
                     ></textarea>
                   </div>
                 </motion.div>
