@@ -2,10 +2,12 @@
 import Wrapper from "@/components/Wrapper";
 import Image from "next/image";
 import Places from "../Places";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { regions } from "@/loops/textsvg";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Send from "@/app/Send";
+import { send } from "../actions/send";
+import { toast } from "react-toastify";
 function Contact() {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -14,6 +16,42 @@ function Contact() {
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "120%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [messages, setMessages] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [countryData, setCountryData] = useState([]);
+
+  const handleSend = async () => {
+    if (!name || !email || !messages || !country || !phone || !region) return;
+    const res = await send(name, email, messages, country, phone, region);
+    toast.success("Message sent!");
+    setCountry("");
+    setEmail("");
+    setName("");
+    setMessages("");
+    setPhone("");
+    setRegion("");
+    setCompany("");
+  };
+
+  async function getPlaces() {
+    const res = await fetch("https://restcountries.com/v3.1/all");
+    const data = await res.json();
+    const data1 = data.map((place) => place.name.common);
+    const sortedItems = data1.slice().sort((a, b) => a.localeCompare(b));
+    const data2 = ["Select Country", ...sortedItems];
+
+    setCountryData(data2);
+  }
+
+  useEffect(() => {
+    getPlaces();
+  }, []);
   return (
     <main className=" mt-8">
       <motion.div
@@ -148,13 +186,15 @@ function Contact() {
                 <h1 className=" text-xl lg:text-2xl font-Carnas font-bold">
                   Contact Us
                 </h1>
-                <form className=" text-[0.8rem]">
+                <form action={handleSend} className=" text-[0.8rem]">
                   <div className=" grid sm:grid-cols-2 gap-x-4 gap-y-3 mt-4">
                     <div className="space-y-1">
                       <label htmlFor="name">
                         Name <span className=" text-red-500">*</span>
                       </label>
                       <input
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         type="text"
                         id="name"
                         className=" px-3 font-poppins w-full text-black h-9 bg-orange-200/5  border-black border outline-none rounded-sm"
@@ -165,6 +205,8 @@ function Contact() {
                         Email<span className=" text-red-500">*</span>
                       </label>
                       <input
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         type="email"
                         id="email"
                         className=" px-3 font-poppins w-full  bg-orange-200/5  border-black border text-black h-9 outline-none  rounded-sm"
@@ -173,6 +215,8 @@ function Contact() {
                     <div className="space-y-1">
                       <label htmlFor="name">Region</label>
                       <select
+                        value={region}
+                        onChange={(e) => setRegion(e.target.value)}
                         name="region"
                         id=""
                         className=" px-3 font-poppins w-full  bg-orange-200/5  border-black border text-black h-9 outline-none  rounded-sm"
@@ -188,10 +232,16 @@ function Contact() {
                       <label htmlFor="name">Country</label>
                       <select
                         name="country"
+                        value={country}
+                        onChange={(e) => setCountry(e.target.value)}
                         id=""
                         className=" px-3 font-poppins w-full  bg-orange-200/5  border-black border text-black h-9 outline-none  rounded-sm"
                       >
-                        <Places />
+                        {countryData.map((country) => (
+                          <option key={country} value={country}>
+                            {country}
+                          </option>
+                        ))}
                       </select>
                     </div>
                     <div className="space-y-1">
@@ -199,6 +249,8 @@ function Contact() {
                         Phone Number<span className=" text-red-500">*</span>
                       </label>
                       <input
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
                         type="tel"
                         id="phoneNumber"
                         className=" px-3 font-poppins w-full  bg-orange-200/5  border-black border text-black h-9 outline-none  rounded-sm"
@@ -207,6 +259,8 @@ function Contact() {
                     <div className="space-y-1">
                       <label htmlFor="email">Company Name</label>
                       <input
+                        value={company}
+                        onChange={(e) => setCompany(e.target.value)}
                         type="text"
                         id="company-name"
                         className=" px-3 font-poppins w-full  bg-orange-200/5  border-black border text-black h-9 outline-none  rounded-sm"
@@ -215,6 +269,8 @@ function Contact() {
                     <div className="space-y-1">
                       <label htmlFor="message">Message</label>
                       <textarea
+                        value={messages}
+                        onChange={(e) => setMessages(e.target.value)}
                         name="message"
                         id="message"
                         className="w-full focus:outline-none  bg-orange-200/5 border-black border text-black  h-20  rounded-sm"

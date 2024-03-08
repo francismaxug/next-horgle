@@ -4,8 +4,10 @@ import { regions, slides, slides1, text } from "@/loops/textsvg";
 import Image from "next/image";
 import Places from "../Places";
 import Footer from "@/components/Footer";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { send } from "../actions/send";
+import { toast } from "react-toastify";
 
 const poips = {
   hidden: { y: 150 },
@@ -52,12 +54,6 @@ function Service() {
   const scrollRef = useRef(null);
   const ref = useRef(null);
   const { scrollY } = useScroll();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [messages, setMessages] = useState("");
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("");
-  const [phone, setPhone] = useState("");
 
   // const yText = useTransform(
   //   scrollY,
@@ -76,33 +72,43 @@ function Service() {
   });
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["5%", "120%"]);
   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [messages, setMessages] = useState("");
+  const [country, setCountry] = useState("");
+  const [region, setRegion] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [countryData, setCountryData] = useState([]);
 
-  // const createPrompt = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     const response = await fetch("/api/sendmail/send", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({
-  //         name,
-  //         email,
-  //         messages,
-  //         country,
-  //         phone,
-  //         region,
-  //       }),
-  //     });
-  //     if (response.ok) {
-  //       console.log("sent successfully");
-  //       // console.log(await response.json());
-  //     }
-  //   } catch (error) {
-  //     console.log("eerr", error);
-  //   }
-  // };
+  const handleSend = async () => {
+    if (!name || !email || !messages || !country || !phone || !region) return;
+    const res = await send(name, email, messages, country, phone, region);
+    toast.success("Message sent!");
+    setCountry("");
+    setEmail("");
+    setName("");
+    setMessages("");
+    setPhone("");
+    setRegion("");
+    setCompany("");
 
+    console.log(res);
+  };
+
+  async function getPlaces() {
+    const res = await fetch("https://restcountries.com/v3.1/all");
+    const data = await res.json();
+    const data1 = data.map((place) => place.name.common);
+    const sortedItems = data1.slice().sort((a, b) => a.localeCompare(b));
+    const data2 = ["Select Country", ...sortedItems];
+
+    setCountryData(data2);
+  }
+
+  useEffect(() => {
+    getPlaces();
+  }, []);
   return (
     <main className=" lg:mt-20 xl:mt-12 mt-16">
       <motion.div
@@ -258,7 +264,7 @@ function Service() {
               className=" font-poppins text-white"
             >
               <h1 className=" text-2xl font-semibold">Lets Get Talking</h1>
-              <form onSubmit={""} className=" text-[0.8rem]">
+              <form action={handleSend} className=" text-[0.8rem]">
                 <motion.div
                   variants={form}
                   className=" grid sm:grid-cols-2 gap-x-4 gap-y-3 mt-4"
@@ -269,6 +275,7 @@ function Service() {
                     </label>
                     <input
                       onChange={(e) => setName(e.target.value)}
+                      value={name}
                       type="text"
                       id="name"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -281,6 +288,7 @@ function Service() {
                     <input
                       onChange={(e) => setEmail(e.target.value)}
                       type="email"
+                      value={email}
                       id="email"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
                     />
@@ -288,13 +296,14 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="name">Region</label>
                     <select
+                      value={region}
                       onChange={(e) => setRegion(e.target.value)}
                       name="region"
                       id=""
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
                     >
                       {regions.map((region) => (
-                        <option key={region.id} value={region.id}>
+                        <option key={region.id} value={region.name}>
                           {region.name}
                         </option>
                       ))}
@@ -303,12 +312,18 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="name">Country</label>
                     <select
+                      value={country}
                       onChange={(e) => setCountry(e.target.value)}
                       name="country"
                       id=""
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
                     >
-                      <Places />
+                      {countryData.map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
+                      {/* <Places /> */}
                     </select>
                   </div>
                   <div className="space-y-1">
@@ -316,6 +331,7 @@ function Service() {
                       Phone Number<span className=" text-red-500">*</span>
                     </label>
                     <input
+                      value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       type="tel"
                       id="phoneNumber"
@@ -325,6 +341,8 @@ function Service() {
                   <div className="space-y-1">
                     <label htmlFor="email">Company Name</label>
                     <input
+                      onChange={(e) => setCompany(e.target.value)}
+                      value={company}
                       type="text"
                       id="company-name"
                       className=" px-3 font-poppins w-full text-black h-9 outline-none border-none border-2 border-gray-300 rounded-sm"
@@ -334,6 +352,7 @@ function Service() {
                     <label htmlFor="message">Message</label>
                     <textarea
                       onChange={(e) => setMessages(e.target.value)}
+                      value={messages}
                       name="message"
                       id="message"
                       className="w-full focus:outline-none text-black  h-20 border-2 border-gray-300 rounded-sm"
@@ -343,7 +362,7 @@ function Service() {
 
                 <div className=" sm:float-right sm:-mt-12 mt-5">
                   <button
-                    type="submit"
+                   
                     className=" bg-yellow-500 hover:bg-slate-700 w-28 h-10 rounded-md"
                   >
                     Submit

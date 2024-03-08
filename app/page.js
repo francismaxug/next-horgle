@@ -10,7 +10,6 @@ import Footer from "@/components/Footer";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Send from "@/app/Send";
 
 const ppp = {
   hidden: { y: 90 },
@@ -117,7 +116,7 @@ export default function Home() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className=" text-blue-400 2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas "
+              className="2xl:text-[2.6rem] md:leading-[2.5rem] 2xl:leading-[2.0rem] font-bold xl:max-2xl:text-[2.5rem] font-Carnas text-[1.29rem] sm:text-[1.99rem] md:text-[2rem] carnas "
             >
               We are dynamic, responsible and most trusted petroleum transporter
               <span className=" lg:text-5xl text-yellow-500 ">.</span>
@@ -130,10 +129,9 @@ export default function Home() {
               className=" lg:text-[0.95rem] font-poppins text-justify text-[0.85rem]  "
             >
               J.K Horgle Transport and Company Limited seeks to become a first
-              class petroleum haulage company of <br /> choice in Ghana and the
-              West Africa sub-region by delivering unequalled value to its
-              stakeholders in a socially <br /> and environmentally sustainable
-              manner.
+              class petroleum haulage company of choice in Ghana and the West
+              Africa sub-region by delivering unequalled value to its
+              stakeholders in a socially and environmentally sustainable manner.
             </motion.p>
           </div>
         </Wrapper>

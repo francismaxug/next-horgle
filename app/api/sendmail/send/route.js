@@ -1,41 +1,41 @@
-// const express = require("express");
-import nodemailer from "nodemailer";
-export async function POST(req) {
-  const body = await req.json();
-  const { name, email, messages, country, region, phone } = body;
-  console.log(body);
-  try {
-    const transporter = nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: "forprojectsandtest@gmail.com",
-        pass: "eled jwpw grdh lhso",
-      },
-    });
-    const mailOptions = {
-      from: email,
-      to: "atingafrancis123@gmail.com",
-      subject: "New Form Submission",
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nRegion: ${region}\nCountry: ${country}\nMessage: ${messages}`,
-    };
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.error("Error:", error);
-        Response.json({ error: "An error occurred while sending the email" });
-        return;
-      } else {
-        console.log("Email sent:", info.response);
+// // const express = require("express");
+// import nodemailer from "nodemailer";
+// export async function POST(req) {
+//   const body = await req.json();
+//   const { name, email, messages, region,country, phone } = body;
+//   console.log(body);
+//   try {
+//     const transporter = nodemailer.createTransport({
+//       service: "gmail",
+//       auth: {
+//         user: "forprojectsandtest@gmail.com",
+//         pass: "eled jwpw grdh lhso",
+//       },
+//     });
+//     const mailOptions = {
+//       from: email,
+//       to: "atingafrancis123@gmail.com",
+//       subject: "New Form Submission",
+//       text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nRegion: ${region}\nCountry: ${country}\nMessage: ${messages}`,
+//     };
+//     transporter.sendMail(mailOptions, (error, info) => {
+//       if (error) {
+//         console.error("Error:", error);
+//         Response.json({ error: "An error occurred while sending the email" });
+//         return;
+//       } else {
+//         console.log("Email sent:", info.response);
 
-        Response.json({ message: "Email sent successfully" });
-        return;
-      }
-    });
+//         Response.json({ message: "Email sent successfully" });
+//         return;
+//       }
+//     });
 
-    return Response.json({ message: "Email sents successfully" });
-  } catch (error) {
-    console.log(error);
-  }
-}
+//     return Response.json({ message: "Email sents successfully" });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
 
 // Create a Nodemailer transporter
 
@@ -44,3 +44,16 @@ export async function POST(req) {
 // // Send the email
 
 // Start the server
+
+
+toast.success('🦄 Wow so easy!', {
+  position: "bottom-right",
+  autoClose: 4000,
+  hideProgressBar: false,
+  closeOnClick: true,
+  pauseOnHover: true,
+  draggable: true,
+  progress: undefined,
+  theme: "light",
+  transition: Bounce,
+  });
